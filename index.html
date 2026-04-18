@@ -1,667 +1,1040 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Aman Chauhan Portfolio</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <link rel="stylesheet" href="css/aos.css">
-
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-
-
-
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aman Chauhan — Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-
-/*======================================
-//--//-->   ABOUT
-======================================*/
-
-.about-mf .box-shadow-full {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+:root {
+  --cream: #f4efe6;
+  --cream2: #ece6da;
+  --cream3: #e4ddd0;
+  --white: #ffffff;
+  --ink: #18160f;
+  --ink2: #2e2b22;
+  --muted: #7a766a;
+  --border: #d8d2c6;
+  --rust: #b84a2a;
+  --rust-light: #f2e8e4;
+  --forest: #2c5f45;
+  --forest-light: #e2ede7;
+  --gold: #c49a3a;
+  --gold-light: #f5f0e2;
 }
 
-.about-mf .about-img {
-  margin-bottom: 2rem;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
 }
 
-.about-mf .about-img img {
-  margin-left: 10px;
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 5vw; height: 64px;
+  background: rgba(244,239,230,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
-
-
-.skill-mf .progress {
-  /* background-color: #cde1f8; */
-  margin: .5rem 0 1.2rem 0;
-  border-radius: 0;
-  height: .7rem;
+.n-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900; font-size: 1.15rem;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.3px;
 }
-
-.skill-mf .progress .progress-bar {
-  height: .7rem;
-  background-color: #ffbd39;
+.n-logo span { color: var(--rust); font-style: italic; }
+.n-links { display: flex; gap: 0; list-style: none; }
+.n-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
+  padding: 0.4rem 0.9rem; border-radius: 6px;
+  transition: all 0.18s;
 }
+.n-links a:hover { color: var(--ink); background: var(--cream2); }
+.n-cta {
+  background: var(--ink); color: var(--cream) !important;
+  padding: 0.45rem 1.1rem !important; border-radius: 100px !important;
+  font-weight: 700 !important;
+}
+.n-cta:hover { background: var(--rust) !important; color: #fff !important; }
 
-
-/* Animation styles */
-#typing-animation {
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
   position: relative;
-  font-size: 30px;
-  font-weight: bold;
-  color: rgb(255, 255, 255);
   overflow: hidden;
+}
+
+.hero-left {
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 120px 6vw 80px 6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal texture lines on hero-left */
+.hero-left::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 28px,
+    rgba(255,255,255,0.025) 28px,
+    rgba(255,255,255,0.025) 29px
+  );
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.65);
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; width: fit-content;
+  margin-bottom: 2.2rem;
+  animation: fadeUp 0.6s ease both;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #4dcc82;
+  animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.0;
+  letter-spacing: -2px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-title-row {
+  display: flex; align-items: center; gap: 1rem;
+  margin-top: 1.4rem;
+  animation: fadeUp 0.6s 0.18s ease both;
+}
+.hero-title-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+.hero-title-text {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.4);
   white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
 }
 
-#typing-animation:before {
-  content: "";
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
+.hero-desc {
+  margin-top: 1.8rem;
+  font-size: 0.97rem; color: rgba(255,255,255,0.55);
+  font-weight: 300; line-height: 1.8; max-width: 380px;
+  animation: fadeUp 0.6s 0.26s ease both;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+.hero-btns {
+  display: flex; gap: 0.8rem; flex-wrap: wrap;
+  margin-top: 2.5rem;
+  animation: fadeUp 0.6s 0.34s ease both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.72rem 1.5rem; border-radius: 100px;
+  font-size: 0.86rem; font-weight: 700; font-family: 'Manrope', sans-serif;
+  text-decoration: none; border: none; cursor: pointer; transition: all 0.2s;
+  letter-spacing: 0.2px;
+}
+.btn-cream { background: var(--cream); color: var(--ink); }
+.btn-cream:hover { background: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,154,58,0.35); }
+.btn-outline-w { background: transparent; color: rgba(255,255,255,0.7); border: 1.5px solid rgba(255,255,255,0.15); }
+.btn-outline-w:hover { border-color: rgba(255,255,255,0.4); color: #fff; transform: translateY(-2px); }
+
+.hero-numbers {
+  display: flex; gap: 2rem; margin-top: 3.5rem;
+  padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.08);
+  animation: fadeUp 0.6s 0.42s ease both;
+}
+.h-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -1px; }
+.h-num sup { font-size: 1rem; color: var(--gold); }
+.h-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); font-weight: 500; letter-spacing: 0.5px; margin-top: 0.3rem; }
+
+/* Hero right — large text + photo frame */
+.hero-right {
+  background: var(--cream2);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 80px 5vw 0 5vw;
+  position: relative; overflow: hidden;
+}
+.hero-right-bg-text {
+  position: absolute;
+  top: 80px; right: -20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 16vw; font-weight: 900;
+  color: rgba(0,0,0,0.04);
+  line-height: 1; letter-spacing: -4px;
+  pointer-events: none; user-select: none;
+  white-space: nowrap;
+}
+.hero-right-content {
+  position: relative; z-index: 1;
+}
+.hero-scroll-label {
+  display: flex; align-items: center; gap: 0.7rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted);
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+.hero-scroll-line { width: 32px; height: 1px; background: var(--border); }
+
+.hero-card-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin-top: 2rem;
+  animation: fadeUp 0.6s 0.55s ease both;
+}
+.hc {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.4rem;
+}
+.hc-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.hc-val { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+.hc-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; font-weight: 400; }
+.hc-large { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.award-chip {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold-light); border: 1px solid rgba(196,154,58,0.25);
+  color: var(--gold); padding: 0.35rem 0.8rem; border-radius: 100px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
 }
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
-  }
-  to {
-    width: 0;
-  }
-}
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
-
-/* project image zoom effect */
-
-.zoom-effect {
+/* ─── MARQUEE SKILLS ─── */
+.skills-section {
+  background: var(--ink);
+  padding: 0;
   overflow: hidden;
-  transition: transform 0.3s ease-out;
+  border-top: none;
+}
+.marquee-label {
+  text-align: center;
+  padding: 3.5rem 5vw 1rem;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+.marquee-wrapper {
+  overflow: hidden;
+  padding: 1.5rem 0 3rem;
+  position: relative;
+}
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+  content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+}
+.marquee-wrapper::before { left: 0; background: linear-gradient(to right, var(--ink), transparent); }
+.marquee-wrapper::after { right: 0; background: linear-gradient(to left, var(--ink), transparent); }
+
+.marquee-track {
+  display: flex; gap: 1rem;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+.m-pill {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 100px;
+  font-size: 0.88rem; font-weight: 600;
+  white-space: nowrap; cursor: default;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.m-pill:hover { transform: translateY(-3px); }
+.m-pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+.mp-1 { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.75); }
+.mp-2 { background: rgba(196,154,58,0.12); border: 1px solid rgba(196,154,58,0.25); color: #d4a93e; }
+.mp-2 .pill-dot { background: #d4a93e; }
+.mp-3 { background: rgba(184,74,42,0.12); border: 1px solid rgba(184,74,42,0.25); color: #d46040; }
+.mp-3 .pill-dot { background: #d46040; }
+.mp-4 { background: rgba(44,95,69,0.2); border: 1px solid rgba(44,95,69,0.35); color: #5ab585; }
+.mp-4 .pill-dot { background: #5ab585; }
+.mp-1 .pill-dot { background: rgba(255,255,255,0.4); }
+
+/* ─── EXPERIENCE ─── */
+#experience {
+  background: var(--cream);
+  padding: 7rem 5vw;
+}
+.exp-header {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: end;
+  margin-bottom: 5rem;
+}
+.exp-heading { }
+.exp-intro { font-size: 0.95rem; color: var(--muted); font-weight: 300; line-height: 1.8; }
+
+.exp-cards { display: flex; flex-direction: column; gap: 1.5px; }
+
+.exp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  align-items: stretch;
+  transition: box-shadow 0.25s;
+  cursor: default;
+}
+.exp-card:first-child { border-radius: 16px 16px 0 0; }
+.exp-card:last-child { border-radius: 0 0 16px 16px; }
+.exp-card:only-child { border-radius: 16px; }
+.exp-card + .exp-card { border-top: none; }
+.exp-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.1); z-index: 1; position: relative; }
+.exp-card:hover .ec-left { background: var(--ink); }
+.exp-card:hover .ec-period { color: rgba(255,255,255,0.5); }
+.exp-card:hover .ec-company-icon { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+.ec-left {
+  padding: 2rem 1.5rem;
+  background: var(--cream2);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background 0.25s;
+}
+.ec-period { font-size: 0.78rem; color: var(--muted); font-weight: 500; line-height: 1.6; transition: color 0.25s; }
+.ec-company-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--border); color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1rem;
+  transition: all 0.25s; margin-top: 1.5rem;
 }
 
-.zoom-effect:hover {
-  transform: scale(1.1);
+.ec-mid {
+  padding: 2rem 2rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.ec-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-weight: 700; color: var(--ink);
+  letter-spacing: -0.3px;
+}
+.ec-company { font-size: 0.88rem; color: var(--muted); margin-top: 0.35rem; font-weight: 400; }
+.ec-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+.ec-tag {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.8px;
+  text-transform: uppercase; padding: 0.22rem 0.65rem;
+  border-radius: 4px;
+}
+.tag-r { background: var(--rust-light); color: var(--rust); }
+.tag-g { background: var(--forest-light); color: var(--forest); }
+.tag-b { background: var(--gold-light); color: var(--gold); }
+
+.ec-right {
+  padding: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  border-left: 1px solid var(--border);
+  min-width: 90px;
+}
+.ec-badge-current {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.65rem; font-weight: 800;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--forest);
+  background: var(--forest-light);
+  padding: 0.8rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid rgba(44,95,69,0.2);
+}
+.ec-badge-past {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--muted); opacity: 0.5;
 }
 
+/* ─── ABOUT ─── */
+#about {
+  background: var(--cream2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 7rem 5vw;
+}
+.about-split {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 6rem; align-items: start;
+}
+.about-big-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 700; line-height: 1.35; letter-spacing: -0.5px;
+  color: var(--ink); margin-bottom: 2rem;
+}
+.about-big-text em { font-style: italic; color: var(--rust); }
+.about-body { font-size: 0.95rem; color: var(--muted); font-weight: 300; line-height: 1.85; }
+.about-body p + p { margin-top: 1.1rem; }
+.about-meta-grid { display: grid; gap: 0.7rem; }
+.am-row {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 1rem; align-items: baseline;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.18s;
+}
+.am-row:hover { background: var(--white); border-color: var(--border); }
+.am-lbl { font-size: 0.67rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.am-val { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
 
+/* ─── PROJECTS ─── */
+#projects {
+  background: var(--cream);
+  padding: 7rem 5vw;
+}
+.proj-intro {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: end; gap: 2rem; margin-bottom: 3rem;
+}
+.proj-count {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; font-weight: 900; color: var(--cream2);
+  line-height: 1; letter-spacing: -3px; border-right: none;
+}
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--border);
+  gap: 1px;
+}
+.pc {
+  background: var(--white);
+  padding: 1.3rem 1.4rem 1.4rem;
+  text-decoration: none;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: background 0.18s;
+  min-height: 130px;
+}
+.pc:hover { background: var(--ink); }
+.pc:hover .pc-num { color: rgba(255,255,255,0.25); }
+.pc:hover .pc-name { color: #fff; }
+.pc:hover .pc-url { color: rgba(255,255,255,0.4); }
+.pc:hover .pc-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+.pc:hover .pc-arr { color: var(--gold); transform: translate(3px,-3px); }
+.pc-num { font-size: 0.62rem; font-weight: 700; color: var(--cream3); letter-spacing: 1px; margin-bottom: 0.6rem; transition: color 0.18s; }
+.pc-name { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 700; color: var(--ink); transition: color 0.18s; flex: 1; }
+.pc-url { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; transition: color 0.18s; font-weight: 400; }
+.pc-tag {
+  display: inline-block; margin-top: 0.75rem;
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--rust); background: var(--rust-light);
+  padding: 0.18rem 0.5rem; border-radius: 3px;
+  width: fit-content; transition: all 0.18s;
+}
+.pc-arr { position: absolute; top: 1.1rem; right: 1.1rem; color: var(--cream3); font-size: 0.85rem; font-style: normal; transition: all 0.18s; }
+
+/* ─── EDUCATION ─── */
+#education {
+  background: var(--cream2);
+  border-top: 1px solid var(--border);
+  padding: 7rem 5vw;
+}
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.edu-c {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.5rem;
+  transition: all 0.22s;
+}
+.edu-c:hover {
+  border-color: var(--rust);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+.edu-yr-tag {
+  display: inline-block;
+  background: var(--cream2); color: var(--muted);
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 1px;
+  padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 1rem;
+}
+.edu-deg {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--ink);
+  margin-bottom: 0.35rem; line-height: 1.3;
+}
+.edu-sch { font-size: 0.78rem; color: var(--muted); font-weight: 400; line-height: 1.4; margin-bottom: 1.2rem; }
+.edu-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 900; color: var(--forest);
+  letter-spacing: -1px;
+}
+.edu-score-lbl { font-size: 0.68rem; color: var(--muted); font-weight: 500; margin-top: 0.1rem; }
+
+/* ─── TRAINING ─── */
+#training {
+  background: var(--cream);
+  padding: 7rem 5vw;
+  border-top: 1px solid var(--border);
+}
+.train-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.train-c {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 2.2rem;
+}
+.tc-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.92rem; font-weight: 700; color: var(--muted);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 1.5rem; padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+.ti {
+  display: grid; grid-template-columns: auto 1fr;
+  gap: 1rem; align-items: start;
+  padding: 1rem 0; border-bottom: 1px solid var(--border);
+}
+.ti:last-child { border-bottom: none; padding-bottom: 0; }
+.ti-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 900; color: var(--cream2);
+  line-height: 1; letter-spacing: -1px;
+}
+.ti-course { font-size: 0.92rem; color: var(--ink); font-weight: 600; }
+.ti-inst { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; font-weight: 400; }
+
+.award-c {
+  background: var(--ink);
+  border: 1px solid transparent;
+  border-radius: 16px; padding: 2.2rem;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.award-c::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg, transparent, transparent 30px,
+    rgba(255,255,255,0.015) 30px, rgba(255,255,255,0.015) 31px
+  );
+}
+.award-top { position: relative; z-index: 1; }
+.award-yr-big {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem; font-weight: 900; color: rgba(255,255,255,0.07);
+  line-height: 1; letter-spacing: -3px; margin-bottom: -1rem;
+}
+.award-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 700; color: #fff;
+  line-height: 1.3; margin-bottom: 0.7rem;
+  position: relative; z-index: 1;
+}
+.award-desc { font-size: 0.83rem; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.7; position: relative; z-index: 1; }
+.award-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(196,154,58,0.15); border: 1px solid rgba(196,154,58,0.3);
+  color: #d4a93e; padding: 0.4rem 0.9rem;
+  border-radius: 100px; font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  position: relative; z-index: 1; margin-top: 2rem; width: fit-content;
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  background: var(--ink);
+  padding: 7rem 5vw;
+  position: relative; overflow: hidden;
+}
+#contact::before {
+  content: 'HELLO';
+  position: absolute; bottom: -40px; right: -20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 22vw; font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.contact-split {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: start; position: relative; z-index: 1;
+}
+.c-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900; color: #fff; line-height: 1.1;
+  letter-spacing: -1.5px; margin-bottom: 0.5rem;
+}
+.c-title em { font-style: italic; color: var(--gold); }
+.c-sub { font-size: 0.95rem; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.8; margin-top: 1.2rem; }
+.c-links { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 2.5rem; }
+.c-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 1.3rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  text-decoration: none; color: #fff;
+  transition: all 0.2s;
+}
+.c-link:hover { background: rgba(255,255,255,0.08); border-color: rgba(196,154,58,0.3); transform: translateX(5px); }
+.cl-meta { display: flex; flex-direction: column; }
+.cl-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.2rem; }
+.cl-val { font-size: 0.9rem; font-weight: 500; }
+.cl-arr { color: rgba(255,255,255,0.2); transition: color 0.2s; font-size: 1rem; }
+.c-link:hover .cl-arr { color: var(--gold); }
+
+.c-right-text {
+  font-size: 1rem; color: rgba(255,255,255,0.35);
+  font-weight: 300; line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+.c-right-text strong { color: rgba(255,255,255,0.7); font-weight: 500; }
+.btn-gold { background: var(--gold); color: #fff; }
+.btn-gold:hover { background: #b8882a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,154,58,0.4); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 5vw;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.f-l { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+.f-l strong { color: rgba(255,255,255,0.5); }
+.f-r { display: flex; gap: 1.5rem; }
+.f-r a { font-size: 0.78rem; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.2s; }
+.f-r a:hover { color: rgba(255,255,255,0.6); }
+
+/* ─── SHARED ─── */
+.s-eye { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+.s-line { width: 24px; height: 1px; background: var(--rust); }
+.s-txt { font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--rust); }
+.s-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700; color: var(--ink); letter-spacing: -0.8px; line-height: 1.15;
+}
+.s-title-light {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700; color: #fff; letter-spacing: -0.8px; line-height: 1.15;
+}
+.s-eye-light .s-line { background: var(--gold); }
+.s-eye-light .s-txt { color: var(--gold); }
+.s-desc { color: var(--muted); font-size: 0.92rem; font-weight: 300; line-height: 1.75; margin-top: 0.5rem; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { padding-top: 3rem; padding-bottom: 3rem; min-height: auto; }
+  .hero-right-bg-text { display: none; }
+  .exp-card { grid-template-columns: 1fr; }
+  .ec-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .ec-right { border-left: none; border-top: 1px solid var(--border); flex-direction: row; }
+  .ec-badge-current { writing-mode: horizontal-tb; transform: none; }
+  .proj-grid { grid-template-columns: repeat(2, 1fr); }
+  .edu-grid { grid-template-columns: repeat(2, 1fr); }
+  .train-layout { grid-template-columns: 1fr; }
+  .about-split, .contact-split, .exp-header { grid-template-columns: 1fr; gap: 2rem; }
+  .n-links { display: none; }
+}
 </style>
+</head>
+<body>
 
+<!-- NAV -->
+<nav>
+  <a href="#" class="n-logo">Aman <span>Chauhan</span></a>
+  <ul class="n-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="n-cta">Hire Me</a></li>
+  </ul>
+</nav>
 
-  </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-	  
-	  
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Aman Chauhan</a>
-	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Open to Work</div>
+    <h1 class="hero-name">Aman<br><em>Chauhan</em></h1>
+    <div class="hero-title-row">
+      <div class="hero-title-line"></div>
+      <div class="hero-title-text">Web Developer · India</div>
+      <div class="hero-title-line"></div>
+    </div>
+    <p class="hero-desc">I craft fast, clean, and production-ready websites. WordPress, React, PHP, Shopify — 3+ years delivering real results for clients worldwide.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-cream">See My Projects</a>
+      <a href="#contact" class="btn btn-outline-w">Contact Me</a>
+    </div>
+    <div class="hero-numbers">
+      <div><div class="h-num">22<sup>+</sup></div><div class="h-label">Projects Delivered</div></div>
+      <div><div class="h-num">3<sup>+</sup></div><div class="h-label">Years Experience</div></div>
+      <div><div class="h-num">8</div><div class="h-label">Technologies</div></div>
+    </div>
+  </div>
 
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav nav ml-auto">
-	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
-	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
-	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
-	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-	  <section id="home-section" class="hero">
-		  <div class="home-slider  owl-carousel">
-	       <div class="slider-item ">
-	      	<div class="overlay"></div>
-	         <div class="container">
-	          <div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
-	          	<div class="one-third js-fullheight order-md-last img" style="background-image:url(images/aman.jpg);">
-	          	 <div class="overlay"></div>
-	          	</div>
-		          <div class="one-forth d-flex  align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-		          	<div class="text">
-		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Aman Chauhan</span></h1>
-						<br>
-			            <h2>A Web Developer | Wordpress Developer</h2>
-						<!-- <h2 class="d-flex" style="margin-bottom: 0">With over 5 years of experience</h2> -->
-						<!-- <br> -->
-			            <p><a href="#" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
-		            </div>
-		          </div>
-	        	</div>
-	        </div>
-	      </div>
-		</div>
-    </section>
-
-
-
-    <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
-    	<div class="container">
-			<div class="row">
-				<div class="row d-flex align-items-stretch">
-				<!-- <div class="row d-flex"> -->
-					<div class="col-md-6 col-lg-5 d-flex">
-						<div class="img-about img d-flex align-items-stretch">
-							<div class="overlay">
-								<div class="row">
-									<div class="col-sm-6 col-md-5">
-									  <div class="about-img">
-										<img src="images/am.jpg" class="img-fluid rounded b-shadow-a" alt="">
-									  </div>
-									</div>
-									<!-- Details next to profile image -->
-									<div class="col-sm-6 col-md-7">
-									  <div class="about-info">
-										<p><span class="title-s">Name: </span> <span>Aman Chauhan</span></p>
-										<p><span class="title-s">Job Role: </span> <span>Web Developer</span></p>
-										<p><span class="title-s">Experience: </span> <span>2 Years 3 Months</span></p>
-										<p><span class="title-s">Address: </span> <span>Faridabad, India</span></p>
-									  </div>
-									</div>
-								  </div>
-
-								<div class="skill-mf">
-									<p class="title-s">Skills</p>
-									<span>Wordpress</span><br>
-									
-									<span>Core Php</span><br>
-									<span>HTML</span><br>
-									<span>CSS</span><br>
-									<span>Java Script</span><br>
-									<span>Swagger</span><br>
-									<span>MySql</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
-						<div class="row justify-content-start pb-3">
-							<div class="col-md-12 heading-section ftco-animate">
-								
-								<h1 class="big">About</h1>
-								<h2 class="mb-4">About Me</h2>
-								
-								<p>I am a passionate <strong>WordPress Developer</strong> with over <strong>2 years of experience</strong> in building and customizing websites that deliver high performance and great user experiences. I specialize in developing custom WordPress themes, plugins, and solutions tailored to meet the unique needs of businesses and individuals.</p>
-								<p>Over the years, I have successfully completed a variety of projects, ranging from <strong>eCommerce stores</strong> to personal portfolios, ensuring that each project not only meets the client's requirements but also exceeds their expectations.</p>
-								<p>Whether you're looking for a <strong>dynamic, responsive website</strong>, seamless <strong>WooCommerce integration</strong>, or <strong>custom plugin development</strong>, I bring dedication, creativity, and a deep understanding of the WordPress ecosystem to every project. Let's create something amazing together!</p>
-							</div>
-						</div>
-
-
-						<div class="counter-wrap ftco-animate d-flex mt-md-3">
-							<div class="text">
-								<p class="mb-4">
-									<span class="number" data-number="20">0</span> <span>+</span>
-									<span>&nbsp; Projects completed</span>
-								</p>
-								<p><a href="https://linkedin.com/in/aman-chauhan-9a137b214/" target="_blank" class="btn btn-primary py-3 px-3">LinkedIn</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    </section>
-
-
-
-	
-    <section class="ftco-section ftco-no-pb" id="resume-section">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-            <p>Experienced <strong>WordPress Developer</strong> with <strong>2+ years</strong> of expertise in building custom WordPress solutions, enhancing website functionality, and delivering optimized, user-friendly websites. Skilled in theme and plugin development, responsive design, and integrating modern web technologies to create high-performance websites tailored to client needs.</p>
-          </div>
+  <div class="hero-right">
+    <div class="hero-right-bg-text">DEV</div>
+    <div class="hero-right-content">
+      <div class="hero-scroll-label">
+        <div class="hero-scroll-line"></div>
+        Quick Overview
+      </div>
+      <div class="hero-card-grid">
+        <div class="hc">
+          <div class="hc-label">Current Role</div>
+          <div class="hc-val">Web Developer</div>
+          <div class="hc-sub">Tech9logy Pvt. Ltd, Faridabad</div>
         </div>
-
-		<div class="row">
-			<h1 class="big-4">Experience</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="row">
-				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
-						<span class="date">Jan-2024 to Present</span>
-						<h2>Web Developer</h2>
-						<span class="position">Tech9logy Creators</span>
-						
-					</div>
-
-				</div>
-
-				<div class="col-md-6">
-					<div class="resume-wrap ftco-animate">
-						<span class="date">July-2022 to Jan-2024</span>
-						<h2>Web Developer</h2>
-						<span class="position">Leanport software pvt. ltd.</span>
-					</div>
-
-				</div>
-			</div>
-
-		<br>
-		<br>
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="row">
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">2020-2022</span>
-					<h2>Master Of Computer Application</h2>
-					<span class="position">Axis Buiness School, Kanpur</span>
-					<p class="mt-4">CGPA: 8.79</p>
-				</div>
-			</div>
-		
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">2016-2019</span>
-					<h2>BSC-IT</h2>
-					<span class="position">BFIT Group Of Institution, Dehradun</span>
-					<p class="mt-4">CGPA: 7.32</p>
-				</div>
-			</div>
-		
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">2016</span>
-					<h2>12<sup>th</sup></h2>
-					<span class="position">HCM Inter College Kasampur Garhi, Bijnor</span>
-					<p class="mt-4">Percentage: 73%</p>
-				</div>
-			</div>
-		
-			<div class="col-md-6">
-				<div class="resume-wrap ftco-animate">
-					<span class="date">2014</span>
-					<h2>10<sup>th</sup></h2>
-					<span class="position">Sant Mary High School Bhikkawala, Bijnor</span>
-					<p class="mt-4">Percentage: 81%</p>
-				</div>
-			</div>
-		</div>
-		
-
-    		<div class="row justify-content-center mt-5">
-    			<div class="col-md-6 text-center ftco-animate">
-    				<p><a href="https://drive.google.com/file/d/1lMTQhTdagnNH-Bl2JzSoeFyYGI8sxCl4/view?usp=sharing" target="_blank" class="btn btn-primary py-4 px-5">Download CV</a></p>
-    			</div>
-    		</div>
-    	</div>
-    </section>
-
-   
-
-    <section class="ftco-section" id="project-section">
-      <div class="container">
-        <div class="row justify-content-center mb-5 pb-5">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Projects</h1>
-            <h2 class="mb-4">Projects</h2>
-          </div>
+        <div class="hc">
+          <div class="hc-label">Education</div>
+          <div class="hc-val">MCA</div>
+          <div class="hc-sub">AKTU — 8.79 CGPA</div>
         </div>
-        <div class="row d-flex">
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://absolutewebpromotions.com/demo/transupply/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/transuplly.png');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://absolutewebpromotions.com/demo/transupply/" target="_blank">Transsupply</a></h3>
-                <p>Transsupply is a professional Group of Companies that serves transportation from the EU countries to any point in the CIS countries</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry justify-content-end">
-              <a href="https://1800bizfund.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/1800bizfund.png');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://1800bizfund.com/" target="_blank">1800bizfund</a></h3>
-                <p>Send contact form data into salesforce.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex ftco-animate">
-          	<div class="blog-entry">
-              <a href="https://americanaddictionhelpline.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/americanaddiction.png');">
-              </a>
-              <div class="text mt-3 float-right d-block">
-
-                <h3 class="heading"><a href="https://americanaddictionhelpline.com/" target="_blank">American Addiction Helpline</a></h3>
-                <p>Welcome to American Addiction Helpline, where hope finds a voice and healing begins. Our journey began with a shared experience—a deep understanding of the struggles and challenges faced by those battling addiction.</p>
-              </div>
-            </div>
-          </div>
+        <div class="hc">
+          <div class="hc-label">Location</div>
+          <div class="hc-val">Bijnor, UP</div>
+          <div class="hc-sub">Available Remotely</div>
         </div>
-	<br>
-		<!-- added justify-content-center to center align the last two projects -->
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://am-pioneers.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/ampionner.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://am-pioneers.com/" target="_blank">Am-pioneers</a></h3>
-				  <p>We are Europe's leading partner for consulting on 3D printing technologies in industrial manufacturing.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-			  <div class="blog-entry justify-content-end">
-				<a href="https://bright-digital.de/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/bright digital.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-  
-				  <h3 class="heading"><a href="https://bright-digital.de/" target="_blank">Bright Digital</a></h3>
-				  <p>Bright Digital is the leading digitization agency in Germany. We have a proven track record of optimizing our clients' online presence.</p>
-				</div>
-			  </div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				  <a href="https://fluidrock.co.za/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/fluidrock.png');">
-				  </a>
-				  <div class="text mt-3 float-right d-block">
-	
-					<h3 class="heading"><a href="https://fluidrock.co.za/" target="_blank">Fluidrock</a></h3>
-					<p>We provide world-class corporate governance solutions to South African, African and international organisations.</p>
-				  </div>
-				</div>
-			</div>
-		 </div>
-		 <!-- 3rd row -->
-		 <br>
-		 <!-- added justify-content-center to center align the last two projects -->
-		 <div class="row d-flex justify-content-center">  
-			 <div class="col-md-4 d-flex ftco-animate">
-				 <div class="blog-entry justify-content-end">
-				 <a href="https://fluidrockacademy.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/fluidrockacademy.png');">
-				 </a>
-				 <div class="text mt-3 float-right d-block">
-   
-				   <h3 class="heading"><a href="https://fluidrockacademy.com/" target="_blank">Fluidrock Academy</a></h3>
-				   <p>We create a eCommerce website and also send lead into salesforce.</p>
-				 </div>
-			   </div>
-			 </div>
-			 <div class="col-md-4 d-flex ftco-animate">
-			   <div class="blog-entry justify-content-end">
-				 <a href="https://hollyransom.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/hollyramson.png');">
-				 </a>
-				 <div class="text mt-3 float-right d-block">
-   
-				   <h3 class="heading"><a href="https://hollyransom.com/" target="_blank">Hollyransom</a></h3>
-				   <p>Send contact form data into salesforce.</p>
-				 </div>
-			   </div>
-			 </div>
-			 <div class="col-md-4 d-flex ftco-animate">
-				 <div class="blog-entry justify-content-end">
-				   <a href="http://linguidoor.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/linguidoorcom.png');">
-				   </a>
-				   <div class="text mt-3 float-right d-block">
-	 
-					 <h3 class="heading"><a href="http://linguidoor.com/" target="_blank">Linguidoor</a></h3>
-					 <p>At Linguidoor, we are more than just a translation and localization services provider – we are your partners in global communication.</p>
-				   </div>
-				 </div>
-			 </div>
-		  </div>
-<!-- 4th row -->
-<br>
-<!-- added justify-content-center to center align the last two projects -->
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://migso.io/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/migso1.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://migso.io/" target="_blank">migSO</a></h3>
-				<p>I was responsible for developing the product details section for the MIGSO website. My work involved creating a user-friendly and visually appealing interface.</p>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-			<div class="blog-entry justify-content-end">
-				<a href="https://www.absolutewebpromotions.com/demo/movers/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/movers.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://www.absolutewebpromotions.com/demo/movers/" target="_blank">Movers On Demand</a></h3>
-				<p>In 2006, our founder noticed that customers who recruited reputed property moving companies, had to go through a harrowing time to get their residences and belongings moved from one place to another</p>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://www.orientbell.com/blog/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/obl.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-					<h3 class="heading"><a href="https://www.orientbell.com/blog/" target="_blank">Orientbell Blog</a></h3>
-					<p>I contributed to the development of the blog and web stories section for Orientbell's website. This involved creating a dynamic and engaging layout for blog posts.</p>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- 5th row -->
-<br>
-<!-- added justify-content-center to center align the last two projects -->
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://panama-institut.org/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/panama.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://panama-institut.org/" target="_blank">Panama Institut</a></h3>
-				<p>I developed the Panama Institut website using Elementor, focusing on creating a clean, modern, and responsive design.</p>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-			<div class="blog-entry justify-content-end">
-				<a href="https://www.ppmfunds.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/ppm.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://www.ppmfunds.com/" target="_blank">PPM Funds</a></h3>
-				<p>Send contact form data into salesforce.</p>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://rockymtappraisal.com/" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/rma.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-					<h3 class="heading"><a href="https://rockymtappraisal.com/" target="_blank">Rocky Mountain Appraisal</a></h3>
-					<p>I created a custom WordPress theme for the Rocky Mountain Appraisal website, focusing on making the site dynamic and fully customizable.</p>
-				</div>
-				</div>
-			</div>
-		</div>
-		<!-- 6th row -->
-<br>
-<!-- added justify-content-center to center align the last two projects -->
-		<div class="row d-flex justify-content-center">  
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="https://www.absolutewebpromotions.com/rmr" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/rmr.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://www.absolutewebpromotions.com/rmr" target="_blank">Rocky Mountain Ranches</a></h3>
-				<p>Developed a custom WordPress theme with dynamic content capabilities for seamless updates and a responsive user experience.</p>
-				</div>
-			</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-			<div class="blog-entry justify-content-end">
-				<a href="https://tech9logy.com/store" target="_blank" class="block-20 zoom-effect" style="background-image: url('images/store.png');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-
-				<h3 class="heading"><a href="https://tech9logy.com/store" target="_blank">Tech9logy Creators Store</a></h3>
-				<p>Built an online store using WooCommerce for selling extensions, with a focus on seamless user experience and efficient product management.</p>
-				</div>
-			</div>
-			</div>
-		</div>
-
-	  </div>
-    </section>
-
-	
-
-
-
-    <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-      <div class="container">
-      	<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
-          </div>
+        <div class="hc">
+          <div class="hc-label">Languages</div>
+          <div class="hc-val">Hindi</div>
+          <div class="hc-sub">+ English</div>
         </div>
-
-        <div class="row d-flex contact-info mb-5">
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-map-signs"></span>
-          		</div>
-          		<h3 class="mb-4">Address</h3>
-	            <p>Faridabad, India</p>
-	          </div>
+        <div class="hc hc-large">
+          <div>
+            <div class="hc-label">Award — 2025</div>
+            <div class="hc-val">Customer Kudos Award</div>
+            <div class="hc-sub">Exceptional client satisfaction & results</div>
           </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-phone2"></span>
-          		</div>
-          		<h3 class="mb-4">Contact Number</h3>
-	            <p><a href="tel:+919548318951">+91 9548318951</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-paper-plane"></span>
-          		</div>
-          		<h3 class="mb-4">Email Address</h3>
-	            <p><a href="mailto:amanchauhan8532@gmail.com">amanchauhan8532@gmail.com</a></p>
-	          </div>
-          </div>
-          <div class="col-md-6 col-lg-3 d-flex ftco-animate">
-          	<div class="align-self-stretch box p-4 text-center">
-          		<div class="icon d-flex align-items-center justify-content-center">
-          			<span class="icon-globe"></span>
-          		</div>
-          		<h3 class="mb-4">Download Resume</h3>
-	            <p><a href="https://drive.google.com/file/d/1lMTQhTdagnNH-Bl2JzSoeFyYGI8sxCl4/view?usp=sharing" target="_blank">resumelink</a></p>
-	          </div>
-          </div>
+          <div class="award-chip">&#9733; Recognized</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-		  <div class="container">
-			<br>
-			<br>
-			<div class="row justify-content-center">
-				<div class="col-md-7 ftco-animate text-center">
-					<h2>Have a<span> Question?  </span> <a href="https://docs.google.com/forms/d/e/1FAIpQLSfQdvjhHhmdivTvfU0cCYXYk4zmx7T-ull1zuiia_tHBap42w/viewform" target="_blank" class="btn btn-primary py-3 px-5">Click Here</a> </h2>
-				</div>
-			</div>
-				<br>
-					<ul class="ftco-footer-social list-unstyled d-flex justify-content-center align-items-center mb-0">
-					  <li class="ftco-animate normal-txt">Find me on  </li>
-					  <li class="ftco-animate"><a href="https://linkedin.com/in/aman-chauhan-9a137b214" target="_blank"><span class="icon-linkedin"></span></a></li>  
-					  <li class="ftco-animate"><a href="https://www.facebook.com/profile.php?id=100005778437077" target="_blank"><span class="icon-facebook"></span></a></li>
-				      <li class="ftco-animate"><a href="https://www.instagram.com/amanchauhan5561" target="_blank"><span class="icon-instagram"></span></a></li>
-					</ul>
-				<br>
-		   </div>
-   </div>
- </section>
+<!-- SKILLS MARQUEE -->
+<section class="skills-section">
+  <div class="marquee-label">Tech Stack &amp; Skills</div>
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <!-- Set 1 -->
+      <div class="m-pill mp-2"><span class="pill-dot"></span>WordPress</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>React.js</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>PHP</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>JavaScript</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>HTML5</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>CSS3</div>
+      <div class="m-pill mp-2"><span class="pill-dot"></span>Shopify</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>MySQL</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>Swagger / REST API</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>Responsive Design</div>
+      <div class="m-pill mp-2"><span class="pill-dot"></span>Third-party Integrations</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>Performance Optimization</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>Custom PHP Backends</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>Page Builders</div>
+      <!-- Set 2 — duplicate for infinite loop -->
+      <div class="m-pill mp-2"><span class="pill-dot"></span>WordPress</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>React.js</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>PHP</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>JavaScript</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>HTML5</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>CSS3</div>
+      <div class="m-pill mp-2"><span class="pill-dot"></span>Shopify</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>MySQL</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>Swagger / REST API</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>Responsive Design</div>
+      <div class="m-pill mp-2"><span class="pill-dot"></span>Third-party Integrations</div>
+      <div class="m-pill mp-4"><span class="pill-dot"></span>Performance Optimization</div>
+      <div class="m-pill mp-3"><span class="pill-dot"></span>Custom PHP Backends</div>
+      <div class="m-pill mp-1"><span class="pill-dot"></span>Page Builders</div>
+    </div>
+  </div>
+</section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="exp-header reveal">
+    <div>
+      <div class="s-eye"><div class="s-line"></div><div class="s-txt">Career Path</div></div>
+      <div class="s-title">Work Experience</div>
+    </div>
+    <p class="exp-intro">3+ years building production websites across startups, agencies, and product companies in India and abroad.</p>
+  </div>
 
- 
-	
-    <footer class="ftco-footer ftco-section">
-		<div class="container">
-		  <div class="row">
-			<div class="col-md-12 text-center">
-  
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by Aman Chauhan
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-			</div>
-		  </div>
-		</div>
-	  </footer>
+  <div class="exp-cards reveal">
+    <div class="exp-card">
+      <div class="ec-left">
+        <div class="ec-period">Jan 2024<br>— Present</div>
+        <div class="ec-company-icon">T9</div>
+      </div>
+      <div class="ec-mid">
+        <div class="ec-role">Web Developer</div>
+        <div class="ec-company">Tech9logy Pvt. Ltd — Faridabad, Haryana</div>
+        <div class="ec-tags">
+          <span class="ec-tag tag-r">WordPress</span>
+          <span class="ec-tag tag-g">React.js</span>
+          <span class="ec-tag tag-b">PHP</span>
+          <span class="ec-tag tag-r">Shopify</span>
+        </div>
+      </div>
+      <div class="ec-right"><div class="ec-badge-current">Current</div></div>
+    </div>
 
+    <div class="exp-card">
+      <div class="ec-left">
+        <div class="ec-period">Jul 2022<br>— Jan 2024</div>
+        <div class="ec-company-icon">LP</div>
+      </div>
+      <div class="ec-mid">
+        <div class="ec-role">WordPress Developer</div>
+        <div class="ec-company">Leanport Software Pvt. Ltd — Noida, UP</div>
+        <div class="ec-tags">
+          <span class="ec-tag tag-r">WordPress</span>
+          <span class="ec-tag tag-b">PHP</span>
+          <span class="ec-tag tag-g">MySQL</span>
+        </div>
+      </div>
+      <div class="ec-right"><div class="ec-badge-past">Past</div></div>
+    </div>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+    <div class="exp-card">
+      <div class="ec-left">
+        <div class="ec-period">Jan 2022<br>— Jun 2022</div>
+        <div class="ec-company-icon">GT</div>
+      </div>
+      <div class="ec-mid">
+        <div class="ec-role">Project Assistant</div>
+        <div class="ec-company">Gratia Technology Pvt. Ltd — Assam</div>
+        <div class="ec-tags">
+          <span class="ec-tag tag-b">Web Dev</span>
+          <span class="ec-tag tag-g">Support</span>
+        </div>
+      </div>
+      <div class="ec-right"><div class="ec-badge-past">Past</div></div>
+    </div>
+  </div>
+</section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="s-eye"><div class="s-line"></div><div class="s-txt">About Me</div></div>
+  <div class="about-split reveal">
+    <div>
+      <div class="about-big-text">A developer who builds things that <em>actually work</em> — on every device, for every client.</div>
+      <div class="about-body">
+        <p>I'm a web developer with 3+ years of hands-on experience building websites and applications for clients across India, Germany, the USA, and South Africa.</p>
+        <p>I've worked with agencies and startups to ship high-performance websites with third-party integrations like Salesforce, custom PHP backends, and modern front-end frameworks.</p>
+        <p>I bring accountability and clean code to every project — and a genuine commitment to getting things right the first time.</p>
+      </div>
+    </div>
+    <div class="about-meta-grid">
+      <div class="am-row"><span class="am-lbl">Location</span><span class="am-val">Hidayatpur, Bijnor, UP</span></div>
+      <div class="am-row"><span class="am-lbl">DOB</span><span class="am-val">03 December 1998</span></div>
+      <div class="am-row"><span class="am-lbl">Degree</span><span class="am-val">MCA — AKTU (8.79 CGPA)</span></div>
+      <div class="am-row"><span class="am-lbl">Languages</span><span class="am-val">Hindi &amp; English</span></div>
+      <div class="am-row"><span class="am-lbl">Email</span><span class="am-val">amanchauhan8532@gmail.com</span></div>
+      <div class="am-row"><span class="am-lbl">Phone</span><span class="am-val">+91 9548318951</span></div>
+    </div>
+  </div>
+</section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  
-  <script src="js/main.js"></script>
-    
-  </body>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="proj-intro reveal">
+    <div>
+      <div class="s-eye"><div class="s-line"></div><div class="s-txt">Portfolio</div></div>
+      <div class="s-title">Projects I've Built</div>
+      <p class="s-desc">Real client websites across India, USA, Germany, UK &amp; South Africa.</p>
+    </div>
+    <div class="proj-count">23</div>
+  </div>
+  <div class="proj-grid reveal">
+    <a href="https://tech9logy.com/" target="_blank" class="pc"><div class="p-num">01</div><div class="pc-name">Tech9logy</div><div class="pc-url">tech9logy.com</div><div class="pc-tag">Corporate</div><em class="pc-arr">↗</em></a>
+    <a href="https://nangiaglobal.com/" target="_blank" class="pc"><div class="p-num">02</div><div class="pc-name">Nangia Global</div><div class="pc-url">nangiaglobal.com</div><div class="pc-tag">Consulting</div><em class="pc-arr">↗</em></a>
+    <a href="https://doontempotraveller.com/" target="_blank" class="pc"><div class="p-num">03</div><div class="pc-name">Doon Tempo Traveller</div><div class="pc-url">doontempotraveller.com</div><div class="pc-tag">Travel</div><em class="pc-arr">↗</em></a>
+    <a href="https://khalsacollection.in/" target="_blank" class="pc"><div class="p-num">04</div><div class="pc-name">Khalsa Collection</div><div class="pc-url">khalsacollection.in</div><div class="pc-tag">E-Commerce</div><em class="pc-arr">↗</em></a>
+    <a href="https://magepoint.com/" target="_blank" class="pc"><div class="p-num">05</div><div class="pc-name">Magepoint</div><div class="pc-url">magepoint.com</div><div class="pc-tag">Tech</div><em class="pc-arr">↗</em></a>
+    <a href="https://nangia.com/" target="_blank" class="pc"><div class="p-num">06</div><div class="pc-name">Nangia &amp; Co</div><div class="pc-url">nangia.com</div><div class="pc-tag">Finance</div><em class="pc-arr">↗</em></a>
+    <a href="https://nangia-andersen.com/" target="_blank" class="pc"><div class="p-num">07</div><div class="pc-name">Nangia Andersen</div><div class="pc-url">nangia-andersen.com</div><div class="pc-tag">Consulting</div><em class="pc-arr">↗</em></a>
+    <a href="https://1800bizfund.com/" target="_blank" class="pc"><div class="p-num">08</div><div class="pc-name">1800 Biz Fund</div><div class="pc-url">1800bizfund.com</div><div class="pc-tag">Salesforce</div><em class="pc-arr">↗</em></a>
+    <a href="https://hollyransom.com/" target="_blank" class="pc"><div class="p-num">09</div><div class="pc-name">Holly Ransom</div><div class="pc-url">hollyransom.com</div><div class="pc-tag">Salesforce</div><em class="pc-arr">↗</em></a>
+    <a href="https://www.ppmfunds.com/" target="_blank" class="pc"><div class="p-num">10</div><div class="pc-name">PPM Funds</div><div class="pc-url">ppmfunds.com</div><div class="pc-tag">Salesforce</div><em class="pc-arr">↗</em></a>
+    <a href="https://bright-digital.de/" target="_blank" class="pc"><div class="p-num">11</div><div class="pc-name">Bright Digital</div><div class="pc-url">bright-digital.de</div><div class="pc-tag">Agency</div><em class="pc-arr">↗</em></a>
+    <a href="https://lingidoor.com/" target="_blank" class="pc"><div class="p-num">12</div><div class="pc-name">Lingidoor</div><div class="pc-url">lingidoor.com</div><div class="pc-tag">Multilingual</div><em class="pc-arr">↗</em></a>
+    <a href="https://americanaddictionhelpline.com/" target="_blank" class="pc"><div class="p-num">13</div><div class="pc-name">American Addiction Helpline</div><div class="pc-url">americanaddictionhelpline.com</div><div class="pc-tag">Healthcare</div><em class="pc-arr">↗</em></a>
+    <a href="https://fluidrockacademy.com/" target="_blank" class="pc"><div class="p-num">14</div><div class="pc-name">Fluid Rock Academy</div><div class="pc-url">fluidrockacademy.com</div><div class="pc-tag">Education</div><em class="pc-arr">↗</em></a>
+    <a href="https://fluidrock.co.za/" target="_blank" class="pc"><div class="p-num">15</div><div class="pc-name">Fluid Rock</div><div class="pc-url">fluidrock.co.za</div><div class="pc-tag">South Africa</div><em class="pc-arr">↗</em></a>
+    <a href="https://www.orientbell.com/blog/" target="_blank" class="pc"><div class="p-num">16</div><div class="pc-name">Orient Bell Blog</div><div class="pc-url">orientbell.com/blog</div><div class="pc-tag">WordPress</div><em class="pc-arr">↗</em></a>
+    <a href="https://giftmyway.in/" target="_blank" class="pc"><div class="p-num">17</div><div class="pc-name">Gift My Way</div><div class="pc-url">giftmyway.in</div><div class="pc-tag">E-Commerce</div><em class="pc-arr">↗</em></a>
+    <a href="https://am-pioneers.com/" target="_blank" class="pc"><div class="p-num">18</div><div class="pc-name">AM Pioneers</div><div class="pc-url">am-pioneers.com</div><div class="pc-tag">Business</div><em class="pc-arr">↗</em></a>
+    <a href="https://panama-institut.org/" target="_blank" class="pc"><div class="p-num">19</div><div class="pc-name">Panama Institut</div><div class="pc-url">panama-institut.org</div><div class="pc-tag">Institute</div><em class="pc-arr">↗</em></a>
+    <a href="https://guardpatrolproducts.co.uk/" target="_blank" class="pc"><div class="p-num">20</div><div class="pc-name">Guard Patrol Products</div><div class="pc-url">guardpatrolproducts.co.uk</div><div class="pc-tag">Products</div><em class="pc-arr">↗</em></a>
+    <a href="https://migso.io/" target="_blank" class="pc"><div class="p-num">21</div><div class="pc-name">Migso</div><div class="pc-url">migso.io</div><div class="pc-tag">Tech</div><em class="pc-arr">↗</em></a>
+    <a href="https://yatharth114.com/" target="_blank" class="pc"><div class="p-num">22</div><div class="pc-name">Yatharth 114</div><div class="pc-url">yatharth114.com</div><div class="pc-tag">Real Estate</div><em class="pc-arr">↗</em></a>
+    <a href="https://rockymtappraisal.com/" target="_blank" class="pc"><div class="p-num">23</div><div class="pc-name">Rocky Mt Appraisal</div><div class="pc-url">rockymtappraisal.com</div><div class="pc-tag">Services</div><em class="pc-arr">↗</em></a>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="s-eye"><div class="s-line"></div><div class="s-txt">Academics</div></div>
+  <div class="s-title" style="margin-bottom:0.5rem;">Education</div>
+  <p class="s-desc">Consistent performance from school through post-graduation.</p>
+  <div class="edu-grid reveal">
+    <div class="edu-c">
+      <div class="edu-yr-tag">2022</div>
+      <div class="edu-deg">MCA</div>
+      <div class="edu-sch">Axis Business School, Kanpur — AKTU</div>
+      <div class="edu-score">8.79</div>
+      <div class="edu-score-lbl">CGPA</div>
+    </div>
+    <div class="edu-c">
+      <div class="edu-yr-tag">2019</div>
+      <div class="edu-deg">BSc-IT</div>
+      <div class="edu-sch">BFIT Group of Institutions, Dehradun — HNBGU</div>
+      <div class="edu-score">73.2%</div>
+      <div class="edu-score-lbl">Percentage</div>
+    </div>
+    <div class="edu-c">
+      <div class="edu-yr-tag">2016</div>
+      <div class="edu-deg">12th — UP Board</div>
+      <div class="edu-sch">HCM Inter College, Kasampur Garhi</div>
+      <div class="edu-score">71.2%</div>
+      <div class="edu-score-lbl">Percentage</div>
+    </div>
+    <div class="edu-c">
+      <div class="edu-yr-tag">2014</div>
+      <div class="edu-deg">10th — UP Board</div>
+      <div class="edu-sch">Sant Mary High School, Bhikkawala, Bijnor</div>
+      <div class="edu-score">81.3%</div>
+      <div class="edu-score-lbl">Percentage</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training">
+  <div class="s-eye"><div class="s-line"></div><div class="s-txt">Training &amp; Awards</div></div>
+  <div class="s-title" style="margin-bottom:0.5rem;">Certifications</div>
+  <div class="train-layout reveal">
+    <div class="train-c">
+      <div class="tc-h">Training Completed</div>
+      <div class="ti">
+        <div class="ti-num">01</div>
+        <div><div class="ti-course">Python Programming</div><div class="ti-inst">Cetpa Info. Tech Pvt. Ltd, Dehradun</div></div>
+      </div>
+      <div class="ti">
+        <div class="ti-num">02</div>
+        <div><div class="ti-course">Web Development</div><div class="ti-inst">ICIT Institute, Dhampur, Bijnor (UP)</div></div>
+      </div>
+    </div>
+    <div class="award-c">
+      <div class="award-top">
+        <div class="award-yr-big">25</div>
+        <div class="award-title">Customer Kudos Award</div>
+        <div class="award-desc">Recognized for exceptional client satisfaction and delivering outstanding project results — awarded by Tech9logy Pvt. Ltd in 2025.</div>
+      </div>
+      <div class="award-badge">&#9733; Recognized · 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-split reveal">
+    <div>
+      <div class="s-eye s-eye-light"><div class="s-line"></div><div class="s-txt">Let's Talk</div></div>
+      <div class="s-title-light">Got a project?<br><em>Let's build it.</em></div>
+      <p class="c-sub">I'm open to freelance projects, full-time roles, and collaborations. Drop me a message — I respond within 24 hours.</p>
+      <div class="c-links">
+        <a href="mailto:amanchauhan8532@gmail.com" class="c-link">
+          <div class="cl-meta"><span class="cl-lbl">Email</span><span class="cl-val">amanchauhan8532@gmail.com</span></div>
+          <span class="cl-arr">→</span>
+        </a>
+        <a href="tel:+919548318951" class="c-link">
+          <div class="cl-meta"><span class="cl-lbl">Phone / WhatsApp</span><span class="cl-val">+91 9548318951</span></div>
+          <span class="cl-arr">→</span>
+        </a>
+        <a href="https://linkedin.com/in/aman-chauhan-9a137b214" target="_blank" class="c-link">
+          <div class="cl-meta"><span class="cl-lbl">LinkedIn</span><span class="cl-val">aman-chauhan-9a137b214</span></div>
+          <span class="cl-arr">→</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="c-right-text">Whether you need a <strong>WordPress website</strong>, a <strong>custom React app</strong>, a <strong>Shopify store</strong>, or anything in between — I've done it before and I'll do it right.<br><br>Based in India, available for <strong>remote work worldwide</strong>.</p>
+      <a href="mailto:amanchauhan8532@gmail.com" class="btn btn-gold">Send Me an Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-l">© 2025 <strong>Aman Chauhan</strong> — Web Developer</div>
+  <div class="f-r">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+  const secs = document.querySelectorAll('section[id]'), links = document.querySelectorAll('.n-links a');
+  window.addEventListener('scroll', () => {
+    let c = '';
+    secs.forEach(s => { if (scrollY >= s.offsetTop - 100) c = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === '#' + c ? 'var(--ink)' : ''; });
+  });
+</script>
+</body>
 </html>
